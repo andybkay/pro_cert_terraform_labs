@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "name": "John",
+            "level": "admin"
+        },
+        {
+            "name": "Mary",
+            "level": "support"
+        },
+        {
+            "name": "Mark",
+            "level": "support"
+        },
+        {
+            "name": "Lucy",
+            "level": "admin"
+        },
+        {
+            "name": "Karen",
+            "level": "admin"
+        },
+        {
+            "name": "Marcus",
+            "level": "support"
+        }
+    ]
+}
