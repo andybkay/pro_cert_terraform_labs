@@ -8,12 +8,12 @@ locals {
   subnet_newbits = 19 - split("/", var.vpc_cidr)[1]
   az_names       = data.aws_availability_zones.available.names
   # Use the minimum between available AZs and possible subnets to avoid CIDR overflow
-  subnet_count   = min(length(local.az_names), pow(2, local.subnet_newbits))
+  subnet_count = min(length(local.az_names), pow(2, local.subnet_newbits))
 }
 
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
-  
+
   tags = {
     Name        = "${var.environment}-vpc"
     Environment = var.environment
@@ -21,8 +21,8 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "public" {
-  count             = local.subnet_count
-  vpc_id            = aws_vpc.main.id
+  count  = local.subnet_count
+  vpc_id = aws_vpc.main.id
   # Create /19 subnets (8192 IPs each) within the VPC CIDR
   cidr_block        = cidrsubnet(var.vpc_cidr, local.subnet_newbits, count.index)
   availability_zone = local.az_names[count.index]
