@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "name": "John",
+            "role": "admin"
+        },
+        {
+            "name": "Mary",
+            "role": "support"
+        },
+        {
+            "name": "Mark",
+            "role": "support"
+        },
+        {
+            "name": "Lucy",
+            "role": "admin"
+        },
+        {
+            "name": "Karen",
+            "role": "admin"
+        },
+        {
+            "name": "Marcus",
+            "role": "support"
+        }
+    ]
+}
