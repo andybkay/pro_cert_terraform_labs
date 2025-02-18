@@ -2,27 +2,27 @@
     "users": [
         {
             "name": "John",
-            "level": "admin"
+            "role": "admin"
         },
         {
             "name": "Mary",
-            "level": "support"
+            "role": "support"
         },
         {
             "name": "Mark",
-            "level": "support"
+            "role": "support"
         },
         {
             "name": "Lucy",
-            "level": "admin"
+            "role": "admin"
         },
         {
             "name": "Karen",
-            "level": "admin"
+            "role": "admin"
         },
         {
             "name": "Marcus",
-            "level": "support"
+            "role": "support"
         }
     ]
 }
