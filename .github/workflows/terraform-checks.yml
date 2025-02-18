@@ -78,3 +78,9 @@ jobs:
         id: validate
         run: |
           terraform validate
+
+      - name: Terraform Plan
+        if: endsWith(matrix.directory, '/solution')
+        id: plan
+        run: |
+          terraform plan -no-color -input=false
