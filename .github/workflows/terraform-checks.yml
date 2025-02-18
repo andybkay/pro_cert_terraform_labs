@@ -11,7 +11,7 @@ on:
 
 jobs:
   get-directories:
-    name: Get Terraform Directories
+    name: Get Changed Terraform Directories
     runs-on: ubuntu-latest
     outputs:
       dirs: ${{ steps.set-dirs.outputs.dirs }}
@@ -19,11 +19,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Find Terraform Directories
+      - name: Find Changed Terraform Directories
         id: set-dirs
         run: |
-          DIRS=$(find . -type f -name "*.tf" -exec dirname {} \; | sort -u | jq -R -s -c 'split("\n")[:-1]')
-          echo "dirs=$DIRS" >> $GITHUB_OUTPUT
+          # Get list of changed files in the PR
+          CHANGED_FILES=$(git diff --name-only origin/main HEAD | grep '\.tf$' || true)
+          if [ -n "$CHANGED_FILES" ]; then
+            # Extract unique directories from changed .tf files
+            DIRS=$(echo "$CHANGED_FILES" | xargs -I {} dirname {} | sort -u | jq -R -s -c 'split("\n")[:-1]')
+            echo "dirs=$DIRS" >> $GITHUB_OUTPUT
+          else
+            # If no .tf files changed, return empty array to skip matrix
+            echo "dirs=[]" >> $GITHUB_OUTPUT
+          fi
 
   terraform-checks:
     name: Terraform Checks
