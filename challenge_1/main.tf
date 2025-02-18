@@ -4,9 +4,9 @@ provider "aws" {
 
 resource "aws_vpc" "main_vpc" {
   cidr_block = "10.0.0.0/16"
-  
+
   tags = {
-    Name = "Main VPC"
+    Name        = "Main VPC"
     Environment = "Development"
   }
 }
@@ -16,7 +16,7 @@ resource "aws_subnet" "public_subnet" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = "Public Subnet"
+    Name        = "Public Subnet"
     Environment = "Development"
   }
 }
@@ -25,7 +25,7 @@ resource "aws_internet_gateway" "main_igw" {
   vpc_id = aws_vpc.main_vpc.id
 
   tags = {
-    Name = "Main IGW"
+    Name        = "Main IGW"
     Environment = "Development"
   }
 }
@@ -39,7 +39,7 @@ resource "aws_route_table" "public_rt" {
   }
 
   tags = {
-    Name = "Public Route Table"
+    Name        = "Public Route Table"
     Environment = "Development"
   }
 }
@@ -86,7 +86,7 @@ resource "aws_security_group" "allow_web" {
   }
 
   tags = {
-    Name = "allow_web"
+    Name        = "allow_web"
     Environment = "Development"
   }
 }
@@ -99,7 +99,7 @@ resource "aws_instance" "web_server" {
   vpc_security_group_ids = [aws_security_group.allow_web.id]
 
   tags = {
-    Name = "Web Server"
+    Name        = "Web Server"
     Environment = "Development"
   }
 }

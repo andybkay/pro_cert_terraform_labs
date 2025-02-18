@@ -65,3 +65,47 @@ The solution splits the configuration into multiple files:
 ### Usage
 
 1. Initialize Terraform:
+```bash
+terraform init
+```
+
+2. Plan/Apply for Development:
+```bash
+terraform plan -var-file="dev.tfvars"
+terraform apply -var-file="dev.tfvars"
+```
+
+3. Plan/Apply for Production:
+```bash
+terraform plan -var-file="prod.tfvars"
+terraform apply -var-file="prod.tfvars"
+```
+
+### Technical Details
+
+#### Subnet Calculations
+- Uses /19 subnet mask providing 8,192 IP addresses per subnet
+- Dynamically calculates maximum possible subnets within VPC CIDR
+- Implements safeguards against CIDR range overflow
+
+#### Resource Organization
+- VPC resources grouped in `vpc.tf`
+- Security configurations isolated in `security.tf`
+- Compute resources in `ec2.tf`
+- Clear separation of concerns
+
+#### Variable Structure
+- Region configuration
+- Environment naming
+- CIDR block definitions
+- Instance specifications
+- AMI selection
+
+## Best Practices Implemented
+- DRY (Don't Repeat Yourself) principle
+- Infrastructure as Code (IaC) modularity
+- Clear resource organization
+- Dynamic resource creation
+- Environment-based configuration
+- Consistent naming conventions
+- Proper tagging strategy
