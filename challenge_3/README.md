@@ -35,9 +35,7 @@ The AWS Secrets Manager secret is named db-credentials and stores:
 }
 ```
 ## The local CSV file service-instances.csv contains:
-```pgsql
-Copy
-Edit
+```csv
 service_name,instance_type
 web,t3.medium
 database,r5.large
