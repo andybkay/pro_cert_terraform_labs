@@ -16,8 +16,6 @@ Your task is to:
 ## Resources & Constraints:
 The S3 bucket is named company-configs, and the JSON file env-config.json follows this structure:
 ```json
-Copy
-Edit
 {
   "production": {
     "region": "us-east-1",
@@ -31,8 +29,6 @@ Edit
 ```
 The AWS Secrets Manager secret is named db-credentials and stores:
 ```json
-Copy
-Edit
 {
   "username": "admin",
   "password": "securepass"
